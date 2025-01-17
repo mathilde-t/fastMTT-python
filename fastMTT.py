@@ -5,60 +5,60 @@ from MeasuredTauLepton import *
 
 class Likelihood:
     def __init__(self, Leptonparams, aMET, aCovMET, aPars = np.array([6, 1/1.15])):
-        #Tu zdefiniujemy wszystkie parametry funkcji (self.X)
-        #oraz zrobimy inicjalizację Leptonparams zgodnie z funkcją setLeptonInputs z oryginalnego kodu
-        #(chyba, że dla przejrzystości lepiej to zrobić w osobnej funkcji i wkleić)
+        #Here we define all the parameters of the function (self.X)
+        #and we will initialise the Leptonparams according to the setLeptonInputs function from the original code
+        #(unless, for clarity, it is better to do this in a separate function and paste)
         return
     
     def massLikelihood(self, m):
-        #Implementacja
+        #Implementation
         return #value
     
     def ptLikelihood(self, pTTauTau, type):
-        #Implementacja
+        #Implementation
         return #value
     
     def metTF(metP4, nuP4, covMET):
-        #implementacja
+        #Implementation
         return #value
     
-    #Uwaga#
-    #ComponentParams zastąpią enable/disable Component
-    #które (jeśli dobrze rozumiem) uwzględniają lub nie konkretne prawdopodobieństwa (pt, metTF, mass) w końcowym wyniku
-    #Możemy to zrobić w value albo w __init__ - jeszcze nie wiem, co jest potrzebne do poprawnego działania kodu
+   """Attention
+    ComponentParams will replace enable/disable Component
+    which (if I understand correctly) include or not specific probabilities (pt, metTF, mass) in the final result
+    We can do this in value or in __init__ - I don't yet know what is needed for the code to work properly."""
 
     def value(self, x, ComponentsParams = True):
-        #Implementacja
-        #zawiera odwołania do massLikelihood, ptLikelihood, metTF
-        #o ile są odblokowane przy definicji funkcji
+        #Implementation
+        #contains references to massLikelihood, ptLikelihood, metTF
+        #as long as they are unlocked when the function is defined
         return
 
-###UWAGA###
-#numba nie obsługuje dziedziczenia funkcji
-#więc preferowanym kompilatorem będzie chyba jednak jit
-#Tym niemniej przepisanie kodu do jednej klasy też nie powinno być ewentualnie problemem (prędzej dla MeasuredTauLepton niż dla likelihood)
-#jeśli performance z numbą byłby znacznie większy
-#więc domyślnie napisałbym kod z jit, a potem ew. sprawdził jak to działa z numbą
-#(jeśli uznamy, że implementacja nie jest zbyt ciężka w porównaniu do wyniku)
+###ATTENTION###
+"""numba does not support inheritance of functions so the preferred compiler is probably jit.
+Nevertheless, rewriting the code to a single class should not possibly be a problem either 
+(sooner for MeasuredTauLepton than for likelihood).
+If the performance with numba would be significantly greater so by default I would write 
+the code with jit, and then possibly check how it works with numba (if we consider that 
+Implementation is not too heavy compared to the result)"""
 
 class FastMTT(Likelihood):
     def __init__(self):
-        #inicjalizacja
-        #parametry aPars i ComponentParams przez dziedziczenie z Likelihood
-        #Odpuścimy inicjalizację rzeczy do minimalizacji, skoro i tak jej nie ma w kodzie
+        #initialisation
+        #aPars and ComponentParams parameters by inheritance from Likelihood
+        #We will let go of initialising things for minimisation, since it is not in the code anyway
         return
     
     def run(self, measuredTauLeptons: np.ndarray, measuredMETx, measuredMETy, covMET) -> np.ndarray:
         return
     
-    def compareLeptons(self, measuredTauLepton1: MeasuredTauLepton, measuredTauLepton2: MeasuredTauLepton): #używane w run
-        #Implementacja
+    def compareLeptons(self, measuredTauLepton1: MeasuredTauLepton, measuredTauLepton2: MeasuredTauLepton): #used in the run
+        #Implementation
         return
     
-    def scan(self): #używane w run
-        #Używa MyLikelihood.value
-        #Implementacja z pętlami
-        #lub gradient_descent (w artykule było wspomniane, że może poprawić szybkość algorytmu)
+    def scan(self): #used in the run
+        #Uses MyLikelihood.value
+        #Implementation with loops
+        #or gradient_descent (it was mentioned in the article that it can improve the speed of the algorithm)
         return
     
-#Do wszystkiego dołożymy do testowania funkcje do pomiaru czasu (np. import time), tak jak w oryginalnym kodzie
+"""To all of this, we will add functions for timing (e.g. import time) for testing, as in the original code"""

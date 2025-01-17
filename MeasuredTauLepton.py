@@ -41,20 +41,20 @@ class MeasuredTauLepton:
         self.decayMode = decayMode
         self.initialize()
         
-        ###KOMENTARZ###
-        #Zapisałem to tak, bo w pierwszym konstruktorze istnieją trzy inicjatory:
-        #1. Domyślny, generujący "puste" zdarzenie
-        #2. Główny, generujący wszystkie
-        #3. Służący do kopiowania
+        ###COMMENT###
+        """I wrote it this way because there are three initialisers in the first constructor:
+        1. the default one, generating an ‘empty’ event
+        2. the main one, generating all of them
+        3. used for copying
 
-        #Więc oczywiście 2. potrzeba będzie zaimplementować, ale nie wiem czy potrzebujecie pozostałych dwóch
-        #i która opcja powinna być domyślna (full_setup = True czy False)
+        So obviously the 2nd one will need to be implemented, but I don't know if you need the other two
+        and which option should be the default (full_setup = True or False)
 
-        #W przypadku kopii (3) może też pojawić się problem z tworzeniem kopii - tzn. czy wystarczyłaby zwykła kopia
-        #czy jednak potrzeba by było kopii głębokiej i do tego importować odpowiednią bibliotekę
-        #(a nwm jak to działa z jit lub numbą)
-        #A nie widziałem użycia (3) w kodzie fastMTT, więc może nie trzeba
-        ###KONIEC###
+        In the case of copy (3), there may also be a problem with creating a copy - i.e. would a simple copy suffice
+        whether you would need a deep copy and for that import the appropriate library
+        (and I don't know how it works with jit or numba).
+        #And I haven't seen the use of (3) in fastMTT code, so maybe you don't need it
+        """
 
         if full_setup:
             minVisMass = electronMass
@@ -98,7 +98,7 @@ class MeasuredTauLepton:
         return
     
 
-    #A to jest wydzielone, bo zachowuję strukturę z oryginalnego kodu
+    #And this is separated because I keep the structure from the original code
     def initialize(self):
         self.p = self.pt * np.cosh(self.eta)
         self.px = self.pt * np.cos(self.phi)
