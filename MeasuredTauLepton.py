@@ -53,7 +53,7 @@ class MeasuredTauLepton:
         In the case of copy (3), there may also be a problem with creating a copy - i.e. would a simple copy suffice
         whether you would need a deep copy and for that import the appropriate library
         (and I don't know how it works with jit or numba).
-        #And I haven't seen the use of (3) in fastMTT code, so maybe you don't need it
+        And I haven't seen the use of (3) in fastMTT code, so maybe you don't need it
         """
 
         if full_setup:

@@ -5,10 +5,10 @@ from MeasuredTauLepton import *
 
 class Likelihood:
     def __init__(self, Leptonparams, aMET, aCovMET, aPars = np.array([6, 1/1.15])):
-        #Here we define all the parameters of the function (self.X)
-        #and we will initialise the Leptonparams according to the setLeptonInputs function from the original code
-        #(unless, for clarity, it is better to do this in a separate function and paste)
-        return
+        """Here we define all the parameters of the function (self.X)
+        and we will initialise the Leptonparams according to the setLeptonInputs function from the original code
+        (unless, for clarity, it is better to do this in a separate function and paste)
+        return"""
     
     def massLikelihood(self, m):
         #Implementation
